@@ -16,7 +16,7 @@ st.markdown(hide_default_format, unsafe_allow_html=True)
 
 @st.cache_resource # to cache models so it doesn't reload everytime.
 def load_model():
-  model=tf.keras.models.load_model('/Users/bryantan/Documents/GA/capstone/code/benign_malignant_final_model.h5')# loading in the trained model
+  model=tf.keras.models.load_model('./benign_malignant_final_model.h5')# loading in the trained model
   return model
 with st.spinner('Model is being loaded..'):# to tell users model is loading
   model=load_model()
