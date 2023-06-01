@@ -1,0 +1,3 @@
+numpy==1.24.2
+streamlit==1.22.0
+tensorflow_macos==2.9.0
