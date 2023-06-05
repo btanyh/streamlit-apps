@@ -14,22 +14,6 @@ hide_default_format = """
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
 
-def add_bg_from_url(): # Setting a background image on the app for aesthetic purposes
-    st.markdown(
-         f"""
-         <style>
-         .stApp {{
-             background-image: url("https://images.unsplash.com/photo-1676312754401-d97fe43c2c4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80");
-             background-attachment: fixed;
-             background-size: cover
-         }}
-         </style>
-         """,
-         unsafe_allow_html=True
-     )
-
-add_bg_from_url() 
-
 @st.cache_resource # to cache models so it doesn't reload everytime.
 def load_model():
   model=tf.keras.models.load_model('./benign_malignant_final_model.h5')# loading in the trained model
@@ -44,6 +28,7 @@ file = st.file_uploader("Please upload an image of a skin lesion in either jpg o
 
 if file is None:
     st.write(f'<p style="font-size:26px;color:black;">Please upload an image file to be classified as benign or malignant.</p>', unsafe_allow_html=True) # user instructions
+    st.write(f'<p style="font-size:26px;color:black;">After uploading the image, the program will automatically classify the image as either malignant melanoma or benign with recommended next steps.</p>', unsafe_allow_html=True) # user instructions
 ### if uploaded file is an image, run the following lines of code
 else:
     test_image = image.load_img(file,target_size=(224,224))#resize image
@@ -59,4 +44,3 @@ else:
         else:
             text = 'Your skin lesion has been classified as benign. Nothing to worry about.'
             st.write(f'<p style="font-size:26px;color:green;">{text}</p>', unsafe_allow_html=True)
-    
