@@ -39,12 +39,14 @@ with st.spinner('Model is being loaded..'):# to tell users model is loading
 
 st.title('Skin Lesion Classifier')# title of the app shown to users
 
+# Setting the title in the page
+st.write(f'<p style="font-size:38px;color:white;">Skin Lesion Classifier.</p>', unsafe_allow_html=True) 
 
-file = st.file_uploader("Please upload an image of a skin lesion in either jpg or png extension.", type=["jpg", "png"])# user instructions
+file = st.file_uploader(type=["jpg", "png"])# user instructions
 
 if file is None:
-    st.write(f'<p style="font-size:26px;color:black;">Please upload an image file to be classified as benign or malignant.</p>', unsafe_allow_html=True) 
-    st.write(f'<p style="font-size:26px;color:black;">After uploading the image, the program will automatically run and tell you whether the uploaded image has been classified as malignant melanoma or not by the program.</p>', unsafe_allow_html=True)
+    st.write(f'<p style="font-size:26px;color:white;">Please upload an image file to be classified as benign or malignant.</p>', unsafe_allow_html=True) 
+    st.write(f'<p style="font-size:26px;color:white;">After uploading the image, the program will automatically run and tell you whether the uploaded image has been classified as malignant melanoma or not by the program.</p>', unsafe_allow_html=True)
 
 # user instructions
 ### if uploaded file is an image, run the following lines of code
