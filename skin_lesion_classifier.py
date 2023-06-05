@@ -1,3 +1,4 @@
+%%writefile skin_lesion_classifier.py
 # importing necessary modules
 import streamlit as st
 import tensorflow as tf
@@ -13,6 +14,22 @@ hide_default_format = """
        </style>
        """
 st.markdown(hide_default_format, unsafe_allow_html=True)
+
+def add_bg_from_url(): # Setting a background image on the app for aesthetic purposes
+    st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background-image: url("https://images.unsplash.com/photo-1676312754401-d97fe43c2c4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80");
+             background-attachment: fixed;
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
+
+add_bg_from_url() 
 
 @st.cache_resource # to cache models so it doesn't reload everytime.
 def load_model():
@@ -36,7 +53,7 @@ else:
     test_image = image.img_to_array(test_image) # 1st: convert loaded image to array
     test_image = np.expand_dims(test_image, axis=0) # 2nd: https://www.tensorflow.org/api_docs/python/tf/expand_dims (to add additional 4th dummy dimension for batch on top of height, width, channel for a color image, to meet Tensorflow's expected no. of dimensions for input image
     result = model.predict(test_image)# predict the probability of the image
-    for pred in result:
+    for pred in result:.str
         if pred[0] > 0.5:
             text = 'Your skin lesion has been classified as malignant melanoma. Please visit a doctor IMMEDIATELY!'
             st.write(f'<p style="font-size:26px;color:red;">{text}</p>', unsafe_allow_html=True)
