@@ -1,4 +1,3 @@
-%%writefile skin_lesion_classifier.py
 # importing necessary modules
 import streamlit as st
 import tensorflow as tf
@@ -53,7 +52,7 @@ else:
     test_image = image.img_to_array(test_image) # 1st: convert loaded image to array
     test_image = np.expand_dims(test_image, axis=0) # 2nd: https://www.tensorflow.org/api_docs/python/tf/expand_dims (to add additional 4th dummy dimension for batch on top of height, width, channel for a color image, to meet Tensorflow's expected no. of dimensions for input image
     result = model.predict(test_image)# predict the probability of the image
-    for pred in result:.str
+    for pred in result:
         if pred[0] > 0.5:
             text = 'Your skin lesion has been classified as malignant melanoma. Please visit a doctor IMMEDIATELY!'
             st.write(f'<p style="font-size:26px;color:red;">{text}</p>', unsafe_allow_html=True)
