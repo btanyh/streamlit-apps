@@ -39,8 +39,9 @@ else:
     result = model.predict(test_image)# predict the probability of the image
     for pred in result:
         if pred[0] > 0.5:
-            text = 'Your skin lesion has been classified as malignant melanoma. Please visit a doctor IMMEDIATELY!'
+            text = 'Your skin lesion is suspected to be malignant melanoma. Please visit a doctor IMMEDIATELY!'
             st.write(f'<p style="font-size:26px;color:red;">{text}</p>', unsafe_allow_html=True)
         else:
             text = 'Your skin lesion has been classified as benign. Nothing to worry about.'
             st.write(f'<p style="font-size:26px;color:green;">{text}</p>', unsafe_allow_html=True)
+    
