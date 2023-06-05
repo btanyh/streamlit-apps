@@ -19,7 +19,7 @@ def add_bg_from_url(): # Setting a background image on the app for aesthetic pur
          f"""
          <style>
          .stApp {{
-             background-image: url("https://images.unsplash.com/photo-1676312754401-d97fe43c2c4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80");
+             background-image: url("https://images.unsplash.com/photo-1631248055158-edec7a3c072b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2322&q=80");
              background-attachment: fixed;
              background-size: cover
          }}
@@ -43,7 +43,10 @@ st.title('Skin Lesion Classifier')# title of the app shown to users
 file = st.file_uploader("Please upload an image of a skin lesion in either jpg or png extension.", type=["jpg", "png"])# user instructions
 
 if file is None:
-    st.write(f'<p style="font-size:26px;color:black;">Please upload an image file to be classified as benign or malignant.</p>', unsafe_allow_html=True) # user instructions
+    st.write(f'<p style="font-size:26px;color:black;">Please upload an image file to be classified as benign or malignant.</p>', unsafe_allow_html=True) 
+    st.write(f'<p style="font-size:26px;color:black;">After uploading the image, the program will automatically run and tell you whether the uploaded image has been classified as malignant melanoma or not by the program.</p>', unsafe_allow_html=True)
+
+# user instructions
 ### if uploaded file is an image, run the following lines of code
 else:
     test_image = image.load_img(file,target_size=(224,224))#resize image
