@@ -42,7 +42,7 @@ st.title('Skin Lesion Classifier')# title of the app shown to users
 # Setting the title in the page
 st.write(f'<p style="font-size:38px;color:white;">Skin Lesion Classifier.</p>', unsafe_allow_html=True) 
 
-file = st.file_uploader(type=["jpg", "png"])# user instructions
+file = st.file_uploader(,type=["jpg", "png"])# user instructions
 
 if file is None:
     st.write(f'<p style="font-size:26px;color:white;">Please upload an image file to be classified as benign or malignant.</p>', unsafe_allow_html=True) 
